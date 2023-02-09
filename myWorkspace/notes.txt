@@ -1,0 +1,21 @@
+mkdir ~/myWorkspace
+cd ~/myWorkspace
+leaf setup -p mangOH-yellow-wp77xx_0.7.0
+git clone --recursive https://github.com/mangOH/mangOH
+cd mangOH/components/boschBsec
+wget https://community.bosch-sensortec.com/varuj77995/attachments/varuj77995/bst_community-mems-forum/44/1/BSEC_1.4.7.2_GCC_CortexA7_20190225.zip
+unzip BSEC_1.4.7.2_GCC_CortexA7_20190225.zip
+cd ../..
+leaf shell
+make yellow
+
+update build/update_files/yellow.wp77xx.update 192.168.2.2
+
+logread -f | grep vegas
+
+
+app start vegasMode
+app stop vegasMode
+
+
+scp Downloads/mangOH-yellow-wp77xx_0.7.0-octave.spk root@192.168.2.2:/tmp/

@@ -1,0 +1,10 @@
+{
+    "leafMinVersion": "2.4.0",
+    "profiles": {
+        "MANGOH-YELLOW-WP77XX": {
+            "packages": {
+                "mangOH-yellow-wp77xx": "0.7.0"
+            }
+        }
+    }
+}
