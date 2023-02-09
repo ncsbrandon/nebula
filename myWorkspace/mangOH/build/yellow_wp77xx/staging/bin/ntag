@@ -1,2 +1,0 @@
-#!/bin/sh
-exec /legato/systems/current/bin/app runProc ntag --exe=bin/ntag -- "$@"

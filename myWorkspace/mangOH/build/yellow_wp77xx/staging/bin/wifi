@@ -1,2 +1,0 @@
-#!/bin/sh
-exec /legato/systems/current/bin/app runProc wifi --exe=bin/wifi -- "$@"

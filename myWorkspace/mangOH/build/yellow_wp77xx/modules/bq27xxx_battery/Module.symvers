@@ -1,4 +1,0 @@
-0x00000000	bq27xxx_battery_update	/home/firstuser/nebula/myWorkspace/mangOH/build/yellow_wp77xx/modules/bq27xxx_battery/bq27xxx_battery	EXPORT_SYMBOL_GPL
-0x00000000	bq27xxx_battery_setup	/home/firstuser/nebula/myWorkspace/mangOH/build/yellow_wp77xx/modules/bq27xxx_battery/bq27xxx_battery	EXPORT_SYMBOL_GPL
-0x00000000	power_supply_get_battery_info	/home/firstuser/nebula/myWorkspace/mangOH/build/yellow_wp77xx/modules/bq27xxx_battery/bq27xxx_battery	EXPORT_SYMBOL_GPL
-0x00000000	bq27xxx_battery_teardown	/home/firstuser/nebula/myWorkspace/mangOH/build/yellow_wp77xx/modules/bq27xxx_battery/bq27xxx_battery	EXPORT_SYMBOL_GPL
