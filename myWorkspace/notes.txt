@@ -1,3 +1,4 @@
+# environment setup
 mkdir ~/myWorkspace
 cd ~/myWorkspace
 leaf setup -p mangOH-yellow-wp77xx_0.7.0
@@ -9,13 +10,20 @@ cd ../..
 leaf shell
 make yellow
 
+# flashing the app
 update build/update_files/yellow.wp77xx.update 192.168.2.2
 
+# reading logs
 logread -f | grep vegas
 
-
+# app control
 app start vegasMode
 app stop vegasMode
 
-
+# to completely reflash the device
 scp Downloads/mangOH-yellow-wp77xx_0.7.0-octave.spk root@192.168.2.2:/tmp/
+
+# factory reset
+legato stop
+rm -rf /mnt/flash/legato/*
+reboot

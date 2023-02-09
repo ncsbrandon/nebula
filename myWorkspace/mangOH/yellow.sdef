@@ -42,6 +42,7 @@ apps:
     $CURDIR/apps/YellowOnBoardActuators/leds
     $CURDIR/apps/BatteryService/battery
     $CURDIR/apps/VegasMode/vegasMode
+    $CURDIR/apps/nebulaService/nebulaService
     $CURDIR/apps/Welcome/helloYellow
     $CURDIR/samples/BluetoothSensorTag/bluetoothSensorTag
     $CURDIR/apps/ntag/ntag
@@ -58,6 +59,7 @@ bindings:
     button.gpio -> gpioService.le_gpioPin25
     environment.dhubIO -> dataHub.io
     vegasMode.dhubIO -> dataHub.io
+    nebulaService.dhubIO -> dataHub.io
     ntag.dhubIO -> dataHub.io
     ntag.dhubio2 -> dataHub.io
     NtagDhubIf.dhubIO -> dataHub.io

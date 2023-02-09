@@ -1,0 +1,12 @@
+sources:
+{
+    nebulaService.c
+}
+
+requires:
+{
+    api:
+    {
+        dhubIO = io.api
+    }
+}

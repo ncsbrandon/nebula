@@ -1,0 +1,17 @@
+executables:
+{
+    nebula = ( nebulaService )
+}
+
+processes:
+{
+    run:
+    {
+        ( nebula )
+    }
+}
+
+extern:
+{
+    nebula.nebulaService.dhubIO  // required API
+}

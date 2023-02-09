@@ -6,5 +6,8 @@
                 "mangOH-yellow-wp77xx": "0.7.0"
             }
         }
+    },
+    "env": {
+        "LEGATO_DEF_FILE": "${LEAF_WORKSPACE}/mangOH/apps/NebulaService/nebulaService.adef"
     }
 }
