@@ -1,0 +1,76 @@
+sandboxed: false
+start: auto
+
+executables:
+{
+    gpioExpanderService = ( gpioExpanderGreen gpioExpanderCommon )
+}
+
+processes:
+{
+    run:
+    {
+        ( gpioExpanderService )
+    }
+
+    faultAction: restart
+}
+
+bindings:
+{
+    gpioExpanderService.gpioExpanderGreen.expander2Interrupt -> gpioService.le_gpioPin2
+}
+
+extern:
+{
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp1Pin0
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp1Pin1
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp1Pin2
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp1Pin3
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp1Pin4
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp1Pin5
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp1Pin6
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp1Pin7
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp1Pin8
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp1Pin9
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp1Pin10
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp1Pin11
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp1Pin12
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp1Pin13
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp1Pin14
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp1Pin15
+    // Expander 2 pin 0 is not exposed because it is used as an interrupt input for expander 1
+    //gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp2Pin0
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp2Pin1
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp2Pin2
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp2Pin3
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp2Pin4
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp2Pin5
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp2Pin6
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp2Pin7
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp2Pin8
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp2Pin9
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp2Pin10
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp2Pin11
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp2Pin12
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp2Pin13
+    // Expander 2 pin 14 is not exposed because it is used as an interrupt input for expander 3
+    //gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp2Pin14
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp2Pin15
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp3Pin0
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp3Pin1
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp3Pin2
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp3Pin3
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp3Pin4
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp3Pin5
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp3Pin6
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp3Pin7
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp3Pin8
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp3Pin9
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp3Pin10
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp3Pin11
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp3Pin12
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp3Pin13
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp3Pin14
+    gpioExpanderService.gpioExpanderGreen.mangoh_gpioExp3Pin15
+}

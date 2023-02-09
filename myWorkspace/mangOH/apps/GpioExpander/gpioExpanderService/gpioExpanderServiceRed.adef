@@ -1,0 +1,42 @@
+sandboxed: false
+start: auto
+
+executables:
+{
+    gpioExpanderService = ( gpioExpanderRed gpioExpanderCommon )
+}
+
+processes:
+{
+    run:
+    {
+        ( gpioExpanderService )
+    }
+
+    faultAction: restart
+}
+
+bindings:
+{
+    gpioExpanderService.gpioExpanderRed.expanderInterrupt -> gpioService.le_gpioPin32
+}
+
+extern:
+{
+    gpioExpanderService.gpioExpanderRed.mangoh_gpioExpPin0
+    gpioExpanderService.gpioExpanderRed.mangoh_gpioExpPin1
+    gpioExpanderService.gpioExpanderRed.mangoh_gpioExpPin2
+    gpioExpanderService.gpioExpanderRed.mangoh_gpioExpPin3
+    gpioExpanderService.gpioExpanderRed.mangoh_gpioExpPin4
+    gpioExpanderService.gpioExpanderRed.mangoh_gpioExpPin5
+    gpioExpanderService.gpioExpanderRed.mangoh_gpioExpPin6
+    gpioExpanderService.gpioExpanderRed.mangoh_gpioExpPin7
+    gpioExpanderService.gpioExpanderRed.mangoh_gpioExpPin8
+    gpioExpanderService.gpioExpanderRed.mangoh_gpioExpPin9
+    gpioExpanderService.gpioExpanderRed.mangoh_gpioExpPin10
+    gpioExpanderService.gpioExpanderRed.mangoh_gpioExpPin11
+    gpioExpanderService.gpioExpanderRed.mangoh_gpioExpPin12
+    gpioExpanderService.gpioExpanderRed.mangoh_gpioExpPin13
+    gpioExpanderService.gpioExpanderRed.mangoh_gpioExpPin14
+    gpioExpanderService.gpioExpanderRed.mangoh_gpioExpPin15
+}

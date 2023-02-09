@@ -1,0 +1,69 @@
+---
+#-------------------------------------------------------------------------------
+# USB hub IoT card EEPROM content
+#-------------------------------------------------------------------------------
+size: 4096
+content:
+  # iot card descriptor
+  -
+    size: 192
+    content:
+      # header
+      - 0xAA
+      - 0x55
+      # major version
+      - 0x01
+      # minor version
+      - 0x00
+      # vendor name
+      -
+        size: 32
+        fill: 0x00
+        content:
+          - Talon Communications
+      # product name
+      -
+        size: 32
+        fill: 0x00
+        content:
+          - USB Hub IoT Card
+      # hardware major revision
+      - 0x01
+      # hardware minor revision
+      - 0x00
+      # serial number
+      -
+        size: 32
+        fill: 0x00
+        # The serial number has been left empty. This field should be filled in differently on each
+        # unit. How this is achieved will depend on the EEPROM programming method that is chosen.
+        content:
+          - ""
+      # environmental class
+      - 0x41 # 'A'
+      # power category
+      - 2
+      # height category
+      - 2
+      # eeprom write protect
+      - 1
+  # gpio interface descriptor
+  -
+    size: 64
+    content:
+      # type - gpio
+      - 0
+      # GPIO 1 (I2C_HUB_PROG_EN) - output low
+      - 0x04
+      # GPIO 2 (UNUSED) - input with pull-up
+      - 0x01
+      # GPIO 3 (UNUSED) - input with pull-up
+      - 0x01
+      # GPIO 4 (UNUSED) - input with pull-up
+      - 0x01
+  # usb interface descriptor
+  -
+    size: 64
+    content:
+      # type - usb
+      - 3

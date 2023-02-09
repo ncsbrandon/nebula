@@ -1,0 +1,25 @@
+version: 0.1
+sandboxed: true
+start: auto
+
+executables:
+{
+    webServer = (webComponent)
+    relayService = (relayComponent)
+}
+
+processes:
+{
+    run:
+    {
+        (webServer)
+        (relayService)
+    }
+}
+
+bindings:
+{
+    webServer.webComponent.relayControl -> relayService.relayComponent.relayControl
+    relayService.relayComponent.dataRouter -> dataRouter.dataRouter
+    relayService.relayComponent.mangoh_muxCtrl -> muxCtrlService.mangoh_muxCtrl
+}

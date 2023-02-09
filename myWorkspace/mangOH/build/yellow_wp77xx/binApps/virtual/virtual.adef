@@ -1,0 +1,63 @@
+
+//
+// Application definition created for the application virtual.
+// This is an auto generated definition for a binary-only application.
+//
+// Do not edit, doing so may cause the application to fail.
+//
+
+version: 1.0.0
+start: auto
+sandboxed: true
+
+requires:
+{
+}
+
+bundles:
+{
+    binary:
+    {
+        [rx]   ./read-only/bin/virtual   /bin/virtual
+        [rx]   ./read-only/lib/libComponent_virtual.so   /lib/libComponent_virtual.so
+    }
+}
+
+processes:
+{
+    faultAction: restartApp
+
+    envVars:
+    {
+        LE_LOG_LEVEL = "ERROR"
+        PATH = "/usr/local/bin:/usr/bin:/bin"
+    }
+
+    run:
+    {
+        ( virtual )
+    }
+}
+
+extern:
+{
+    requires:
+    {
+        virtual.virtual.actionRunner = $CURDIR/interfaces/actionRunner.api
+        virtual.virtual.admin = $CURDIR/interfaces/admin.api
+        virtual.virtual.io = $CURDIR/interfaces/io.api
+        virtual.virtual.query = $CURDIR/interfaces/query.api
+    }
+
+    provides:
+    {
+        $CURDIR/interfaces/virtual.api
+    }
+}
+bindings:
+{
+    virtual.virtual.actionRunner -> actions.actionRunner
+    virtual.virtual.admin -> dataHub.admin
+    virtual.virtual.io -> dataHub.io
+    virtual.virtual.query -> dataHub.query
+}

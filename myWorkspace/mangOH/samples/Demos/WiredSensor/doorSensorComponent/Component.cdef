@@ -1,0 +1,13 @@
+requires:
+{
+    api:
+    {
+        le_sensorGpio = le_gpio.api
+        dataRouter.api
+    }
+}
+
+sources:
+{
+    doorSensor.c
+}

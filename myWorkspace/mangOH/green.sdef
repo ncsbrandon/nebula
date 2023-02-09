@@ -1,0 +1,63 @@
+//--------------------------------------------------------------------------------------------------
+// mangOH system definition for the mangOH Green board.
+//
+// Copyright (C) Sierra Wireless Inc.
+//--------------------------------------------------------------------------------------------------
+
+buildVars:
+{
+    MANGOH_BOARD = green
+}
+
+
+#include "shared.sdef"
+
+
+apps:
+{
+    $CURDIR/apps/GpioExpander/gpioExpanderService/gpioExpanderServiceGreen
+    $CURDIR/apps/MuxControl/muxCtrlService/muxCtrlService
+    $CURDIR/apps/MuxControl/tools/muxCtrlTools
+    $CURDIR/apps/DataRouter/dataRouter
+    $CURDIR/apps/DataRouter/drTool/drTool
+    $CURDIR/apps/ArduinoBridge/arduinoBridge
+    $CURDIR/apps/Heartbeat/heartbeatGreen
+    $CURDIR/apps/MqttClient/mqttClient
+}
+
+
+commands:
+{
+    mux = muxCtrlTools:/bin/mux
+    dr = drTool:/bin/dr
+}
+
+
+interfaceSearch:
+{
+    $CURDIR/apps/MuxControl
+    $CURDIR/apps/DataRouter
+    $CURDIR/apps/MqttClient
+}
+
+
+componentSearch:
+{
+    $CURDIR/apps/GpioExpander/gpioExpanderService
+}
+
+
+kernelModules:
+{
+    $CURDIR/linux_kernel_modules/mangoh/mangoh_green_dv4
+
+    /*
+     * Dependencies of the above kernel modules - must be listed explicitly in the SDEF due to the
+     * way that Legato kernel module dependencies work
+     */
+    $CURDIR/linux_kernel_modules/lsm6ds3/lsm6ds3-i2c
+    $CURDIR/linux_kernel_modules/lsm6ds3/lsm6ds3
+}
+
+// Uncomment to include support for the CAN IoT card
+// #include "sinc/can_iot_card.sinc"

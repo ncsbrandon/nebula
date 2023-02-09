@@ -1,0 +1,13 @@
+
+start: manual
+sandboxed: false
+
+executables:
+{
+    mux = (mux)
+}
+
+bindings:
+{
+    mux.mux.mangoh_muxCtrl -> muxCtrlService.mangoh_muxCtrl
+}

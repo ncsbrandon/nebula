@@ -1,0 +1,32 @@
+sources:
+{
+    battery.c
+}
+
+cflags:
+{
+    -std=c99
+}
+
+requires:
+{
+    api:
+    {
+        le_cfg.api
+        dhubIO = io.api
+    }
+
+    component:
+    {
+        batteryUtils
+    }
+}
+
+provides:
+{
+    api:
+    {
+        ma_battery.api
+        ma_adminbattery.api
+    }
+}

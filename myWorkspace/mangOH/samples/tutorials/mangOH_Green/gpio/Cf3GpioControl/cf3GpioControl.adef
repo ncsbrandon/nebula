@@ -1,0 +1,26 @@
+sandboxed: true
+start: manual
+
+executables:
+{
+    cf3GpioControl = ( cf3GpioControlComponent )
+}
+
+processes:
+{
+    envVars:
+    {
+        LE_LOG_LEVEL = DEBUG
+    }
+    run:
+    {
+        ( cf3GpioControl )
+    }
+    faultAction: restart
+}
+
+bindings:
+{
+    cf3GpioControl.cf3GpioControlComponent.le_sensorGpio -> <root>.le_gpioPin25
+    cf3GpioControl.cf3GpioControlComponent.mangoh_ledGpio -> gpioExpanderServiceGreen.mangoh_gpioExp1Pin5
+}

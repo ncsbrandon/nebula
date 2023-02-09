@@ -1,0 +1,32 @@
+sources:
+{
+    router.c
+    db.c
+    mqtt.c
+    list_helpers.c
+}
+
+provides:
+{
+    api:
+    {
+        ${CURDIR}/../dataRouter.api
+    }
+}
+
+requires:
+{
+    api:
+    {
+        mqtt.api
+        le_appInfo.api
+        airVantage/le_avdata.api
+        le_secStore.api
+        le_cfg.api
+    }
+}
+
+cflags:
+{
+    "-std=c99"
+}

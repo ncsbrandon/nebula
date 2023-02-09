@@ -1,0 +1,18 @@
+requires:
+{
+    api:
+    {
+        ${CURDIR}/../relayControl.api
+    }
+}
+
+sources:
+{
+    main.c
+    mongoose/mongoose.c
+}
+
+cflags:
+{
+    -DMG_ENABLE_THREADS
+}

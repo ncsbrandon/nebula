@@ -1,0 +1,39 @@
+start: auto
+
+executables:
+{
+    muxCtrlService = ( muxCtrl )
+}
+
+bindings:
+{
+    muxCtrlService.muxCtrl.mangoh_gpioPinUart1Enable     -> gpioExpanderServiceGreen.mangoh_gpioExp1Pin10
+    muxCtrlService.muxCtrl.mangoh_gpioPinUart1Select     -> gpioExpanderServiceGreen.mangoh_gpioExp1Pin11
+    muxCtrlService.muxCtrl.mangoh_gpioPinSpiEnable       -> gpioExpanderServiceGreen.mangoh_gpioExp1Pin14
+    muxCtrlService.muxCtrl.mangoh_gpioPinSpiSelect       -> gpioExpanderServiceGreen.mangoh_gpioExp1Pin15
+    muxCtrlService.muxCtrl.mangoh_gpioPinUart2Enable     -> gpioExpanderServiceGreen.mangoh_gpioExp3Pin8
+    muxCtrlService.muxCtrl.mangoh_gpioPinUart2Select     -> gpioExpanderServiceGreen.mangoh_gpioExp1Pin12
+    muxCtrlService.muxCtrl.mangoh_gpioPinPcmEnable       -> gpioExpanderServiceGreen.mangoh_gpioExp3Pin9
+    muxCtrlService.muxCtrl.mangoh_gpioPinPcmSelect       -> gpioExpanderServiceGreen.mangoh_gpioExp3Pin10
+    muxCtrlService.muxCtrl.mangoh_gpioPinSdioSelect      -> gpioExpanderServiceGreen.mangoh_gpioExp1Pin13
+    muxCtrlService.muxCtrl.mangoh_gpioPinPcmAnalogSelect -> gpioExpanderServiceGreen.mangoh_gpioExp1Pin6
+    muxCtrlService.muxCtrl.mangoh_gpioPinIot0Reset       -> gpioExpanderServiceGreen.mangoh_gpioExp3Pin4
+    muxCtrlService.muxCtrl.mangoh_gpioPinIot1Reset       -> gpioExpanderServiceGreen.mangoh_gpioExp3Pin3
+    muxCtrlService.muxCtrl.mangoh_gpioPinIot2Reset       -> gpioExpanderServiceGreen.mangoh_gpioExp3Pin2
+    muxCtrlService.muxCtrl.mangoh_gpioPinArduinoReset    -> gpioExpanderServiceGreen.mangoh_gpioExp1Pin4
+}
+
+processes:
+{
+    run:
+    {
+        ( muxCtrlService )
+    }
+
+    faultAction: restart
+}
+
+extern:
+{
+    muxCtrlService.muxCtrl.mangoh_muxCtrl
+}

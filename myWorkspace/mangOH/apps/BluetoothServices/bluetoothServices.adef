@@ -1,0 +1,30 @@
+sandboxed: false
+start: auto
+
+executables:
+{
+    bluetoothServices = ( bluetoothServicesComponent )
+}
+
+processes:
+{
+    run:
+    {
+        bluetoothServices = ( bluetoothServices )
+    }
+
+    faultAction: stopApp
+
+    /*
+    envVars:
+    {
+        LE_LOG_LEVEL = DEBUG
+    }
+    */
+}
+
+bindings:
+{
+    bluetoothServices.bluetoothServicesComponent.dhubAdmin -> dataHub.admin
+    bluetoothServices.bluetoothServicesComponent.le_info -> modemService.le_info
+}

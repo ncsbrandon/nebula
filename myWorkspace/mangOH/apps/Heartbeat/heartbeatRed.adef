@@ -1,0 +1,28 @@
+sandboxed: true
+version: 1.0.0
+start: auto
+
+
+executables:
+{
+    heartbeat = ( heartbeatComponent )
+}
+
+processes:
+{
+    envVars:
+    {
+        LE_LOG_LEVEL = INFO
+    }
+    run:
+    {
+        ( heartbeat )
+    }
+    faultAction: restart
+}
+
+bindings:
+{
+    heartbeat.heartbeatComponent.mangoh_button -> gpioExpanderServiceRed.mangoh_gpioExpPin14
+    heartbeat.heartbeatComponent.mangoh_led -> gpioService.le_gpioPin34
+}

@@ -1,0 +1,28 @@
+executables:
+{
+    imu = (
+        components/sensors/imu
+    )
+}
+
+processes:
+{
+    run:
+    {
+        ( imu )
+    }
+
+    faultAction: restart
+}
+
+extern:
+{
+    imu.imu.imu
+    imu.imu.temperature
+}
+
+bindings:
+{
+    imu.periodicSensor.dhubIO -> dataHub.io
+    imu.imu.dhubIO -> dataHub.io
+}

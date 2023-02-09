@@ -1,0 +1,37 @@
+
+sources:
+{
+    social.cpp
+    twitter.cpp
+}
+
+cxxflags:
+{
+    -std=c++11
+
+    -I${CURDIR}/../http
+    -I${CURDIR}/../json/
+}
+
+requires:
+{
+    component:
+    {
+        ${CURDIR}/../json
+        ${CURDIR}/../http
+    }
+
+    api:
+    {
+        le_cfg.api
+    }
+}
+
+provides:
+{
+    api:
+    {
+        ${CURDIR}/../interfaces/twitter.api
+        ${CURDIR}/../interfaces/serviceConfig.api
+    }
+}

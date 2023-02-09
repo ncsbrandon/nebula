@@ -1,0 +1,7 @@
+mksys
+-t
+wp77xx
+--cflags=-O2
+--object-dir=build/yellow_wp77xx
+--output-dir=build/update_files
+yellow.sdef

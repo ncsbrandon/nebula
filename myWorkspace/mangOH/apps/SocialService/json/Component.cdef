@@ -1,0 +1,13 @@
+
+sources:
+{
+    json.cpp
+    jsonIn.cpp
+    jsonOut.cpp
+    value.cpp
+}
+
+cxxflags:
+{
+    -std=c++11
+}

@@ -1,0 +1,44 @@
+version: 1.0.0
+sandboxed: true
+start: auto
+executables:
+{
+    dataRouter = ( routerComponent )
+}
+
+processes:
+{
+    run:
+    {
+        ( dataRouter )
+    }
+
+    envVars:
+    {
+        LE_LOG_LEVEL=DEBUG
+    }
+
+    maxCoreDumpFileBytes: 512K
+    faultAction: restart
+}
+
+bindings:
+{
+    dataRouter.routerComponent.mqtt -> mqttClient.mqtt
+    dataRouter.routerComponent.le_appInfo -> <root>.le_appInfo
+    dataRouter.routerComponent.le_avdata -> avcService.le_avdata
+    dataRouter.routerComponent.le_secStore -> secStore.le_secStore
+}
+
+requires:
+{
+    configTree:
+    {
+        [w] .
+    }
+}
+
+extern:
+{
+    dataRouter.routerComponent.dataRouter
+}

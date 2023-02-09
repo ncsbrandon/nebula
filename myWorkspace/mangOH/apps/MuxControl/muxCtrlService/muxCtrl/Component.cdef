@@ -1,0 +1,39 @@
+
+requires:
+{
+    api:
+    {
+        mangoh_gpioPinUart1Enable     = le_gpio.api
+        mangoh_gpioPinUart1Select     = le_gpio.api
+        mangoh_gpioPinSpiEnable       = le_gpio.api
+        mangoh_gpioPinSpiSelect       = le_gpio.api
+        mangoh_gpioPinUart2Enable     = le_gpio.api
+        mangoh_gpioPinUart2Select     = le_gpio.api
+        mangoh_gpioPinPcmEnable       = le_gpio.api
+        mangoh_gpioPinPcmSelect       = le_gpio.api
+        mangoh_gpioPinSdioSelect      = le_gpio.api
+        mangoh_gpioPinPcmAnalogSelect = le_gpio.api
+        mangoh_gpioPinIot0Reset       = le_gpio.api
+        mangoh_gpioPinIot1Reset       = le_gpio.api
+        mangoh_gpioPinIot2Reset       = le_gpio.api
+        mangoh_gpioPinArduinoReset    = le_gpio.api
+    }
+}
+
+cflags:
+{
+    "-std=c99"
+}
+
+sources:
+{
+    muxCtrl.c
+}
+
+provides:
+{
+    api:
+    {
+        mangoh_muxCtrl = ${CURDIR}/../../mangoh_muxCtrl.api
+    }
+}

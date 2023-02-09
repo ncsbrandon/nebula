@@ -1,0 +1,60 @@
+
+//
+// Application definition created for the application location.
+// This is an auto generated definition for a binary-only application.
+//
+// Do not edit, doing so may cause the application to fail.
+//
+
+version: 0.0.1
+start: auto
+sandboxed: true
+
+requires:
+{
+}
+
+bundles:
+{
+    binary:
+    {
+        [rx]   ./read-only/bin/location   /bin/location
+        [rx]   ./read-only/lib/libComponent_components.so   /lib/libComponent_components.so
+        [rx]   ./read-only/lib/libComponent_periodicSensor.so   /lib/libComponent_periodicSensor.so
+    }
+}
+
+processes:
+{
+    faultAction: restartApp
+
+    envVars:
+    {
+        LE_LOG_LEVEL = "ERROR"
+        PATH = "/usr/local/bin:/usr/bin:/bin"
+    }
+
+    run:
+    {
+        ( location )
+    }
+}
+
+extern:
+{
+    requires:
+    {
+        location.periodicSensor.dhubIO = $CURDIR/interfaces/io.api
+        location.components.le_posCtrl = $CURDIR/interfaces/le_posCtrl.api
+        location.components.le_pos = $CURDIR/interfaces/le_pos.api
+        location.components.dhubIO = $CURDIR/interfaces/io.api
+    }
+
+}
+bindings:
+{
+    location.periodicSensor.dhubIO -> dataHub.io
+    location.components.le_posCtrl -> positioningService.le_posCtrl
+    location.components.le_pos -> positioningService.le_pos
+    location.components.dhubIO -> dataHub.io
+}

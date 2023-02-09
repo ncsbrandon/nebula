@@ -1,0 +1,26 @@
+//--------------------------------------------------------------------------------------------------
+/**
+ * @page c_actionClient Action Client API
+ *
+ * Additional API functions to support the action command line tool
+ *
+ * Copyright (C) Sierra Wireless Inc.
+ */
+//--------------------------------------------------------------------------------------------------
+
+DEFINE STRING_ACTION_ID_LENGTH_MAX       =  127;
+DEFINE STRING_ACTION_SRC_LENGTH_MAX      =  127;
+
+//--------------------------------------------------------------------------------------------------
+/**
+ * Set Javascript path
+ *
+ * @return
+ *  - LE_OK if successful
+ */
+//--------------------------------------------------------------------------------------------------
+FUNCTION le_result_t SetJSFilePath
+(
+    string id[STRING_ACTION_ID_LENGTH_MAX] IN,
+    string path[STRING_ACTION_SRC_LENGTH_MAX] IN
+);

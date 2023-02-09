@@ -1,0 +1,13 @@
+requires:
+{
+    api:
+    {
+        mangoh_button = le_gpio.api
+        mangoh_led = le_gpio.api
+    }
+}
+
+sources:
+{
+    heartbeat.c
+}

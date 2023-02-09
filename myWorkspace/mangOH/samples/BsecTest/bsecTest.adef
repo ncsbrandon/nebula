@@ -1,0 +1,21 @@
+sandboxed: true
+start: auto
+
+executables:
+{
+    bsecTest = ( bsecTestComponent )
+}
+
+processes:
+{
+    run:
+    {
+        ( bsecTest )
+    }
+    faultAction: restart
+}
+
+bindings:
+{
+    bsecTest.bsecTestComponent.mangOH_bme680 -> environment.mangOH_bme680
+}

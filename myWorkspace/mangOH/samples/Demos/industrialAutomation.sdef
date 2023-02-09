@@ -1,0 +1,13 @@
+//--------------------------------------------------------------------------------------------------
+// Industrial automation demo sdef.  This sdef is based on the mangOH sdef, so there are likely to
+// be many apps which aren't strictly required for the demo.
+//
+// Copyright (C) Sierra Wireless Inc.  Use of this work is subject to license.
+//--------------------------------------------------------------------------------------------------
+
+#include "$MANGOH_ROOT/mangOH_Green.sdef"
+
+apps:
+{
+    $CURDIR/KillSwitch/killSwitch
+}

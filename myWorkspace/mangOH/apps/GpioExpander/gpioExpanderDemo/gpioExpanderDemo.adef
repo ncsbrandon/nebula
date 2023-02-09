@@ -1,0 +1,24 @@
+start: manual
+
+executables:
+{
+    gpioExpanderDemo = ( gpioPinComponent )
+}
+
+bindings:
+{
+    gpioExpanderDemo.gpioPinComponent.mangoh_cardDetect0Gpio    -> gpioExpanderService.mangoh_gpioExp2Pin11
+    gpioExpanderDemo.gpioPinComponent.mangoh_cardDetect1Gpio    -> gpioExpanderService.mangoh_gpioExp2Pin13
+    gpioExpanderDemo.gpioPinComponent.mangoh_cardDetect2Gpio    -> gpioExpanderService.mangoh_gpioExp2Pin12
+    gpioExpanderDemo.gpioPinComponent.mangoh_ledCardDetect0Gpio -> gpioExpanderService.mangoh_gpioExp2Pin3
+    gpioExpanderDemo.gpioPinComponent.mangoh_ledCardDetect1Gpio -> gpioExpanderService.mangoh_gpioExp2Pin4
+    gpioExpanderDemo.gpioPinComponent.mangoh_ledCardDetect2Gpio -> gpioExpanderService.mangoh_gpioExp2Pin5
+}
+
+processes:
+{
+    run:
+    {
+        ( gpioExpanderDemo )
+    }
+}

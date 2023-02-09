@@ -1,0 +1,38 @@
+
+//--------------------------------------------------------------------------------------------------
+/**
+ * The twitter API.  Currently the only function available is to tweet a message.
+ *
+ * Copyright (C) Sierra Wireless Inc. Use of this work is subject to license.
+ */
+//--------------------------------------------------------------------------------------------------
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+/**
+ * Length of a tweet string buffer.  Tweets are UTF-8 encoded, so while a tweet is limited to 140
+ * characters, it is not limited to 140 bytes.
+ */
+//--------------------------------------------------------------------------------------------------
+DEFINE TWEET_LEN = 460;
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+/**
+ * Tweet a status update to the world at large.
+ *
+ * @return - LE_OK if successful.
+ *         - LE_OVERFLOW if the number of characters exceeds 140.
+ *         - LE_FORMAT_ERROR if the string is not utf-8 formatted.
+ *         - LE_COMM_ERROR if the server can not be contacted.
+ *         - LE_NOT_PERMITTED If the service has not been authenticated yet.
+ */
+//--------------------------------------------------------------------------------------------------
+FUNCTION le_result_t Tweet
+(
+    string message[TWEET_LEN] IN  ///< The message to send to the internet.
+);

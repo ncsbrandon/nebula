@@ -1,0 +1,19 @@
+
+sources:
+{
+    twitterClient.cpp
+}
+
+cxxflags:
+{
+    -std=c++11
+}
+
+requires:
+{
+    api:
+    {
+        $MANGOH_ROOT/apps/SocialService/interfaces/serviceConfig.api
+        $MANGOH_ROOT/apps/SocialService/interfaces/twitter.api
+    }
+}

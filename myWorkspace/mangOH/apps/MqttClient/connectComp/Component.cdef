@@ -1,0 +1,14 @@
+
+requires:
+{
+    api:
+    {
+        mqtt.api
+    }
+}
+
+sources:
+{
+    connect.c
+}
+

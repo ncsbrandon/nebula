@@ -1,0 +1,74 @@
+
+//
+// Application definition created for the application orp.
+// This is an auto generated definition for a binary-only application.
+//
+// Do not edit, doing so may cause the application to fail.
+//
+
+version: 0.0.1
+start: auto
+sandboxed: true
+
+groups:
+{
+    dialout
+}
+
+requires:
+{
+}
+
+bundles:
+{
+    binary:
+    {
+        [rx]   ./read-only/bin/orp   /bin/orp
+        [rx]   ./read-only/lib/libComponent_iocClient.so   /lib/libComponent_iocClient.so
+        [rx]   ./read-only/lib/libComponent_orpService.so   /lib/libComponent_orpService.so
+        [rx]   ./read-only/lib/libComponent_periodicSensor.so   /lib/libComponent_periodicSensor.so
+    }
+}
+
+processes:
+{
+    faultAction: restart
+
+    envVars:
+    {
+        LE_LOG_LEVEL = "DEBUG"
+        PATH = "/usr/local/bin:/usr/bin:/bin"
+    }
+
+    run:
+    {
+        ( orp )
+    }
+}
+
+extern:
+{
+    requires:
+    {
+        orp.periodicSensor.dhubIO = $CURDIR/interfaces/io.api
+        orp.iocClient.ioc = $CURDIR/interfaces/ioc.api
+        orp.orpService.io = $CURDIR/interfaces/io.api
+        orp.orpService.admin = $CURDIR/interfaces/admin.api
+        orp.orpService.query = $CURDIR/interfaces/query.api
+        orp.orpService.dhubIO = $CURDIR/interfaces/io.api
+        orp.orpService.ioc = $CURDIR/interfaces/ioc.api
+        orp.orpService.le_appInfo = $CURDIR/interfaces/le_appInfo.api
+    }
+
+}
+bindings:
+{
+    orp.periodicSensor.dhubIO -> dataHub.io
+    orp.iocClient.ioc -> io.ioc
+    orp.orpService.io -> dataHub.io
+    orp.orpService.admin -> dataHub.admin
+    orp.orpService.query -> dataHub.query
+    orp.orpService.dhubIO -> dataHub.io
+    orp.orpService.ioc -> io.ioc
+    orp.orpService.le_appInfo -> <root>.le_appInfo
+}

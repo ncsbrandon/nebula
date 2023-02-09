@@ -1,0 +1,28 @@
+sandboxed: false
+start: auto
+version: 0.2
+
+executables:
+{
+    ledService = (ledServiceComponent)
+}
+
+processes:
+{
+    run:
+    {
+        ( ledService )
+    }
+
+    envVars:
+    {
+        LE_LOG_LEVEL = INFO
+    }
+
+    faultAction: restart
+}
+
+extern:
+{
+    ledService.ledServiceComponent.ma_led
+}

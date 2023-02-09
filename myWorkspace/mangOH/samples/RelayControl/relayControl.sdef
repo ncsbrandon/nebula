@@ -1,0 +1,15 @@
+//--------------------------------------------------------------------------------------------------
+/**
+ * RelayControl system definition.
+ * Includes services required to make a board which sole purpose is to control relays.
+ *
+ * Copyright (C) Sierra Wireless Inc.  Use of this work is subject to license.
+ */
+//--------------------------------------------------------------------------------------------------
+
+#include "$MANGOH_ROOT/mangOH_Green.sdef"
+
+apps:
+{
+    relayControl
+}

@@ -1,0 +1,36 @@
+sandboxed: false
+start: auto
+
+executables:
+{
+    #if ${MANGOH_BOARD} = red
+        battery = (  batteryComponentRed )
+    #elif ${MANGOH_BOARD} = yellow
+        battery = ( batteryComponentYellow )
+    #endif
+}
+
+processes:
+{
+    envVars:
+    {
+        LE_LOG_LEVEL = INFO
+    }
+    run:
+    {
+        ( battery )
+    }
+    faultAction: restart
+}
+
+extern:
+{
+    #if ${MANGOH_BOARD} = red
+        battery.batteryComponentRed.ma_battery
+        battery.batteryComponentRed.ma_adminbattery
+        battery.batteryComponentRed.dhubIO
+    #elif ${MANGOH_BOARD} = yellow
+        battery.batteryComponentYellow.ma_battery
+        battery.periodicSensor.dhubIO
+    #endif
+}

@@ -1,0 +1,7 @@
+0x00000000	bmi160_regmap_config	/home/firstuser/nebula/myWorkspace/mangOH/build/yellow_wp77xx/modules/bmi160/bmi160	EXPORT_SYMBOL
+0x00000000	bq27xxx_battery_update	/home/firstuser/nebula/myWorkspace/mangOH/build/yellow_wp77xx/modules/bq27xxx_battery/bq27xxx_battery	EXPORT_SYMBOL_GPL
+0x00000000	bmi160_core_probe	/home/firstuser/nebula/myWorkspace/mangOH/build/yellow_wp77xx/modules/bmi160/bmi160	EXPORT_SYMBOL_GPL
+0x00000000	bq27xxx_battery_setup	/home/firstuser/nebula/myWorkspace/mangOH/build/yellow_wp77xx/modules/bq27xxx_battery/bq27xxx_battery	EXPORT_SYMBOL_GPL
+0x00000000	power_supply_get_battery_info	/home/firstuser/nebula/myWorkspace/mangOH/build/yellow_wp77xx/modules/bq27xxx_battery/bq27xxx_battery	EXPORT_SYMBOL_GPL
+0x00000000	bq27xxx_battery_teardown	/home/firstuser/nebula/myWorkspace/mangOH/build/yellow_wp77xx/modules/bq27xxx_battery/bq27xxx_battery	EXPORT_SYMBOL_GPL
+0x00000000	bmi160_core_remove	/home/firstuser/nebula/myWorkspace/mangOH/build/yellow_wp77xx/modules/bmi160/bmi160	EXPORT_SYMBOL_GPL

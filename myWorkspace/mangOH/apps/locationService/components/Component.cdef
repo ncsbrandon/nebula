@@ -1,0 +1,32 @@
+//--------------------------------------------------------------------------------------------------
+/**
+ * Component definition file for the positioning sensor
+ */
+//--------------------------------------------------------------------------------------------------
+
+requires:
+{
+    api:
+    {
+        positioning/le_posCtrl.api
+        positioning/le_pos.api
+        dhubIO = io.api
+        ma_combainLocation.api
+        wifi/le_wifiClient.api
+    }
+
+    component:
+    {
+        periodicSensor
+    }
+}
+
+cflags:
+{
+    "-std=c99"
+}
+
+sources:
+{
+    location.c
+}

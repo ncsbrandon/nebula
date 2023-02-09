@@ -1,0 +1,21 @@
+provides:
+{
+    api:
+    {
+        ${CURDIR}/../relayControl.api
+    }
+}
+
+requires:
+{
+    api:
+    {
+        dataRouter.api
+        mangoh_muxCtrl.api
+    }
+}
+
+sources:
+{
+    control.c
+}

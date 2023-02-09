@@ -1,0 +1,17 @@
+executables:
+{
+    vegas = ( vegasMode )
+}
+
+processes:
+{
+    run:
+    {
+        ( vegas )
+    }
+}
+
+extern:
+{
+    vegas.vegasMode.dhubIO  // required API
+}

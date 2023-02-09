@@ -1,0 +1,13 @@
+requires:
+{
+    api:
+    {
+        modemServices/le_adc.api
+        dataRouter.api
+    }
+}
+
+sources:
+{
+    batteryReading.c
+}

@@ -1,0 +1,53 @@
+//--------------------------------------------------------------------------------------------------
+/**
+ * Component definition file for the mangOH Yellow light sensor interface component.
+ */
+//--------------------------------------------------------------------------------------------------
+cflags:
+{
+    -std=c99
+}
+
+provides:
+{
+    api:
+    {
+        light.api
+    }
+}
+
+requires:
+{
+    api:
+    {
+        dhubIO = io.api [types-only]
+    }
+
+    component:
+    {
+        periodicSensor
+        libiioComponent
+    }
+
+    // Use requires/lib once LE-12987 is fixed
+    /*
+    lib:
+    {
+        libiio.so
+        libiio.so.0
+        libiio.so.0.18
+    }
+    */
+}
+
+// Remove ldflags section once LE-12987 is fixed
+ldflags:
+{
+    -liio
+    -L${MANGOH_ROOT}/build/${MANGOH_BOARD}_${LEGATO_TARGET}/libs
+}
+
+sources:
+{
+    lightSensor.c
+}

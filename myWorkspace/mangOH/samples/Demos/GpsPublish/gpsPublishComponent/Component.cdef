@@ -1,0 +1,15 @@
+requires:
+{
+    api:
+    {
+        positioning/le_posCtrl.api
+        positioning/le_pos.api
+        le_cfg.api
+        dataRouter.api
+    }
+}
+
+sources:
+{
+   gpsPublish.c
+}

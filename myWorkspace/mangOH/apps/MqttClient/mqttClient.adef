@@ -1,0 +1,43 @@
+version: 1.0
+sandboxed: false
+
+executables:
+{
+    mqttClient  = ( mqttClientComp )
+    connect     = ( connectComp )
+    disconnect  = ( disconnectComp )
+    send        = ( sendComp )
+}
+
+processes:
+{
+    envVars:
+    {
+        LE_LOG_LEVEL = DEBUG
+    }
+
+    run:
+    {
+        (mqttClient)
+        //(receiver)
+    }
+
+    faultAction: restart
+}
+
+start: auto
+
+bindings:
+{
+    mqttClient.mqttClientComp.le_data -> dataConnectionService.le_data
+    mqttClient.mqttClientComp.le_info -> modemService.le_info
+
+    connect.connectComp.mqtt -> mqttClient.mqttClientComp.mqtt
+    disconnect.disconnectComp.mqtt -> mqttClient.mqttClientComp.mqtt
+    send.sendComp.mqtt -> mqttClient.mqttClientComp.mqtt
+}
+
+extern:
+{
+    mqttClient.mqttClientComp.mqtt
+}

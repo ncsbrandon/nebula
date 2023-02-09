@@ -1,0 +1,27 @@
+sandboxed: true
+start: manual
+
+
+executables:
+{
+    touchData = ( touchDataComponent )
+}
+
+processes:
+{
+    envVars:
+    {
+        LE_LOG_LEVEL = DEBUG
+    }
+    run:
+    {
+        ( touchData )
+    }
+    faultAction: restart
+}
+
+bindings:
+{
+    touchData.touchDataComponent.mangoh_pushButton ->  gpioExpanderServiceGreen.mangoh_gpioExp1Pin7
+    touchData.touchDataComponent.mangoh_ledGpio -> gpioExpanderServiceGreen.mangoh_gpioExp1Pin5
+}

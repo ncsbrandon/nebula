@@ -1,0 +1,3 @@
+/home/firstuser/myWorkspace/mangOH/build/yellow_wp77xx/component/1c5125710c695d91642c59c5a4580863/CMakeFiles/rebuild_cache.dir
+/home/firstuser/myWorkspace/mangOH/build/yellow_wp77xx/component/1c5125710c695d91642c59c5a4580863/CMakeFiles/BluezDBus.dir
+/home/firstuser/myWorkspace/mangOH/build/yellow_wp77xx/component/1c5125710c695d91642c59c5a4580863/CMakeFiles/edit_cache.dir

@@ -1,0 +1,35 @@
+sandboxed: false
+start: auto
+
+executables:
+{
+    killSwitch = ( killSwitch )
+    canOpen = ( canOpen )
+}
+
+processes:
+{
+    run:
+    {
+        ( killSwitch )
+        ( canOpen )
+    }
+
+    faultAction: restart
+}
+
+bundles:
+{
+    file:
+    {
+        [rx] script/can-init.sh /bin/
+    }
+}
+
+bindings:
+{
+    killSwitch.killSwitch.dataRouter -> dataRouter.dataRouter
+    killSwitch.killSwitch.mangoh_canOpenIox1 -> canOpen.canOpen.mangoh_canOpenIox1
+    canOpen.canOpen.mangoh_muxCtrl -> muxCtrlService.mangoh_muxCtrl
+}
+

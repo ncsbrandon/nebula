@@ -1,0 +1,13 @@
+requires:
+{
+    api:
+    {
+        ma_battery.api
+        ma_adminbattery.api
+    }
+}
+
+sources:
+{
+    batteryClient.c
+}

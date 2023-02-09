@@ -1,0 +1,12 @@
+requires:
+{
+    api:
+    {
+        mangoh_ledGpio = le_gpio.api
+    }
+}
+
+sources:
+{
+    timerLed.c
+}

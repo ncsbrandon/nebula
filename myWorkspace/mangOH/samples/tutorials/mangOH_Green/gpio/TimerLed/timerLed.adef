@@ -1,0 +1,25 @@
+sandboxed: true
+start: manual
+
+executables:
+{
+    timerLed = ( timerLedComponent )
+}
+
+processes:
+{
+    envVars:
+    {
+        LE_LOG_LEVEL = DEBUG
+    }
+    run:
+    {
+        ( timerLed )
+    }
+    faultAction: restart
+}
+
+bindings:
+{
+    timerLed.timerLedComponent.mangoh_ledGpio -> gpioExpanderServiceGreen.mangoh_gpioExp1Pin5
+}

@@ -1,0 +1,32 @@
+
+//--------------------------------------------------------------------------------------------------
+/**
+ * Returns the total number of relays controlled by the system.
+ */
+//--------------------------------------------------------------------------------------------------
+FUNCTION le_result_t Count
+(
+    uint8 count OUT ///< Numbers of relay controlled
+);
+
+//--------------------------------------------------------------------------------------------------
+/**
+ * Get the state of a relay.
+ */
+//--------------------------------------------------------------------------------------------------
+FUNCTION le_result_t GetState
+(
+    uint8 id IN,   ///< Id of the relay
+    bool state OUT ///< State of the relay if result is OK
+);
+
+//--------------------------------------------------------------------------------------------------
+/**
+ * Set the state of a relay.
+ */
+//--------------------------------------------------------------------------------------------------
+FUNCTION le_result_t SetState
+(
+    uint8 id IN,    ///< Id of the relay
+    bool state IN   ///< State the the relay should reach
+);

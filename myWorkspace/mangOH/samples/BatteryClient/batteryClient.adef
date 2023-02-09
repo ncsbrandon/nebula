@@ -1,0 +1,28 @@
+sandboxed: false
+version: 1.0.0
+start: manual
+
+
+executables:
+{
+    batteryClient = ( batteryClientComponent )
+}
+
+processes:
+{
+    envVars:
+    {
+        LE_LOG_LEVEL = INFO
+    }
+    run:
+    {
+        ( batteryClient )
+    }
+    faultAction: restart
+}
+
+bindings:
+{
+    batteryClient.batteryClientComponent.ma_battery -> battery.ma_battery
+    batteryClient.batteryClientComponent.ma_adminbattery -> battery.ma_adminbattery
+}

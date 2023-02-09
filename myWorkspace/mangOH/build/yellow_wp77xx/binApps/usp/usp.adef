@@ -1,0 +1,66 @@
+
+//
+// Application definition created for the application usp.
+// This is an auto generated definition for a binary-only application.
+//
+// Do not edit, doing so may cause the application to fail.
+//
+
+version: 0.0.1
+start: auto
+sandboxed: false
+
+requires:
+{
+}
+
+bundles:
+{
+    binary:
+    {
+        [rx]   ./read-only/bin/usp   /bin/usp
+        [rx]   ./read-only/bin/uspTool   /bin/uspTool
+        [rx]   ./read-only/lib/libComponent_components.so   /lib/libComponent_components.so
+        [rx]   ./read-only/lib/libComponent_iocClient.so   /lib/libComponent_iocClient.so
+        [rx]   ./read-only/lib/libComponent_uspTool.so   /lib/libComponent_uspTool.so
+    }
+}
+
+processes:
+{
+    faultAction: restart
+
+    envVars:
+    {
+        LE_LOG_LEVEL = "INFO"
+        PATH = "/legato/systems/current/apps/usp/read-only/bin:/usr/local/bin:/usr/bin:/bin"
+    }
+
+    run:
+    {
+        ( usp )
+    }
+}
+
+extern:
+{
+    requires:
+    {
+        usp.iocClient.ioc = $CURDIR/interfaces/ioc.api
+        usp.components.le_appInfo = $CURDIR/interfaces/le_appInfo.api
+        usp.components.io = $CURDIR/interfaces/io.api
+        usp.components.ioc = $CURDIR/interfaces/ioc.api
+        uspTool.uspTool.io = $CURDIR/interfaces/io.api
+        uspTool.uspTool.admin = $CURDIR/interfaces/admin.api
+    }
+
+}
+bindings:
+{
+    usp.iocClient.ioc -> io.ioc
+    usp.components.le_appInfo -> <root>.le_appInfo
+    usp.components.io -> dataHub.io
+    usp.components.ioc -> io.ioc
+    uspTool.uspTool.io -> dataHub.io
+    uspTool.uspTool.admin -> dataHub.admin
+}

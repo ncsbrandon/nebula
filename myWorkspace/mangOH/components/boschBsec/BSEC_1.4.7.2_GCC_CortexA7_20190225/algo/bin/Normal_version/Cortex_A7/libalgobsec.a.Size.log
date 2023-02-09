@@ -1,0 +1,5 @@
+   text	   data	    bss	    dec	    hex	filename
+     20	      0	      0	     20	     14	polyval.o (ex libalgobsec.a)
+     24	      0	      0	     24	     18	sin.o (ex libalgobsec.a)
+     20	      0	      0	     20	     14	sqrt.o (ex libalgobsec.a)
+  21316	      0	   1120	  22436	   57a4	(TOTALS)

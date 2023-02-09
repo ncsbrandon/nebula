@@ -1,0 +1,89 @@
+//--------------------------------------------------------------------------------------------------
+// mangOH system definition for the mangOH Red board.
+//
+// Copyright (C) Sierra Wireless Inc.
+//--------------------------------------------------------------------------------------------------
+
+buildVars:
+{
+    MANGOH_BOARD = red
+
+    // To keep consistency with yellow - by default wifiService is in a stopped state
+    // Start it to run any wifi commands.
+    LEGATO_WIFI_PA=${CURDIR}/linux_kernel_modules/mt7697wifi/scripts/pa_wifi.sh
+}
+
+
+#include "shared.sdef"
+
+
+#if ${OCTAVE} = 1
+#include "sinc/octave_full.sinc"
+#endif
+
+apps:
+{
+    $CURDIR/apps/LedService/ledService
+    $CURDIR/apps/RedSensorToCloud/redSensor
+#if ${OCTAVE} = 1
+    // redCloud uses AirVantage Data API to publish data which isn't useful when using Octave.
+#else
+    $CURDIR/apps/RedSensorToCloud/redCloud
+#endif
+    $CURDIR/apps/BatteryService/battery
+}
+
+
+bindings:
+{
+    battery.dhubIO -> dataHub.io
+}
+
+
+interfaceSearch:
+{
+    $CURDIR/apps/BatteryService
+    $CURDIR/apps/RedSensorToCloud/interfaces
+}
+
+
+componentSearch:
+{
+    $CURDIR/apps/RedSensorToCloud
+    $CURDIR/apps/BatteryService
+}
+
+
+kernelModules:
+{
+    $CURDIR/linux_kernel_modules/mangoh/mangoh_red
+    $CURDIR/linux_kernel_modules/mt7697wifi/mt7697wifi_core
+
+    /*
+     * Dependencies of the above kernel modules - must be listed explicitly in the SDEF due to the
+     * way that Legato kernel module dependencies work
+     */
+    $CURDIR/linux_kernel_modules/led/led
+    $CURDIR/linux_kernel_modules/bq24296/bq24296
+    $CURDIR/linux_kernel_modules/ltc294x/ltc294x
+    $CURDIR/linux_kernel_modules/bq27xxx/bq27xxx_battery
+    $CURDIR/linux_kernel_modules/cp2130/cp2130
+    $CURDIR/linux_kernel_modules/bmp280/bmp280-i2c
+    $CURDIR/linux_kernel_modules/bmp280/bmp280
+    $CURDIR/linux_kernel_modules/bmi160/bmi160-i2c
+    $CURDIR/linux_kernel_modules/bmi160/bmi160
+
+    #if ${MANGOH_KERNEL_LACKS_IIO} = 1
+
+        $CURDIR/linux_kernel_modules/iio/iio-triggered-buffer
+        $CURDIR/linux_kernel_modules/iio/iio-kfifo-buf
+        $CURDIR/linux_kernel_modules/iio/iio
+
+    #endif // MANGOH_KERNEL_LACKS_IIO
+
+    $CURDIR/linux_kernel_modules/mt7697q/mt7697q
+    $CURDIR/linux_kernel_modules/mt7697serial/mt7697serial
+}
+
+// Uncomment to include support for the CAN IoT card
+// #include "sinc/can_iot_card.sinc"

@@ -1,0 +1,53 @@
+
+//
+// Application definition created for the application canopen.
+// This is an auto generated definition for a binary-only application.
+//
+// Do not edit, doing so may cause the application to fail.
+//
+
+version: 0.1.0
+start: auto
+sandboxed: false
+
+requires:
+{
+}
+
+bundles:
+{
+    binary:
+    {
+        [rx]   ./read-only/bin/canopen   /bin/canopen
+        [rx]   ./read-only/lib/libComponent_components.so   /lib/libComponent_components.so
+    }
+}
+
+processes:
+{
+    faultAction: restartApp
+
+    envVars:
+    {
+        PATH = "/legato/systems/current/apps/canopen/read-only/bin:/usr/local/bin:/usr/bin:/bin"
+        VALGRIND_LIB = "/home/root/bin/valgrind_lib"
+    }
+
+    run:
+    {
+        canopen_dbg = ( canopen )
+    }
+}
+
+extern:
+{
+    requires:
+    {
+        canopen.components.io = $CURDIR/interfaces/io.api
+    }
+
+}
+bindings:
+{
+    canopen.components.io -> dataHub.io
+}

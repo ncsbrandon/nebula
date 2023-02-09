@@ -1,0 +1,78 @@
+sources:
+{
+    expanderConfigurationGreen.c
+}
+
+cflags:
+{
+    "-std=c99"
+    "-I${CURDIR}/../gpioExpanderCommon"
+}
+
+requires:
+{
+    api:
+    {
+        expander2Interrupt = le_gpio.api
+    }
+
+    component:
+    {
+        gpioExpanderCommon
+    }
+}
+
+provides:
+{
+    api:
+    {
+        mangoh_gpioExp1Pin0  = le_gpio.api
+        mangoh_gpioExp1Pin1  = le_gpio.api
+        mangoh_gpioExp1Pin2  = le_gpio.api
+        mangoh_gpioExp1Pin3  = le_gpio.api
+        mangoh_gpioExp1Pin4  = le_gpio.api
+        mangoh_gpioExp1Pin5  = le_gpio.api
+        mangoh_gpioExp1Pin6  = le_gpio.api
+        mangoh_gpioExp1Pin7  = le_gpio.api
+        mangoh_gpioExp1Pin8  = le_gpio.api
+        mangoh_gpioExp1Pin9  = le_gpio.api
+        mangoh_gpioExp1Pin10 = le_gpio.api
+        mangoh_gpioExp1Pin11 = le_gpio.api
+        mangoh_gpioExp1Pin12 = le_gpio.api
+        mangoh_gpioExp1Pin13 = le_gpio.api
+        mangoh_gpioExp1Pin14 = le_gpio.api
+        mangoh_gpioExp1Pin15 = le_gpio.api
+        mangoh_gpioExp2Pin0  = le_gpio.api
+        mangoh_gpioExp2Pin1  = le_gpio.api
+        mangoh_gpioExp2Pin2  = le_gpio.api
+        mangoh_gpioExp2Pin3  = le_gpio.api
+        mangoh_gpioExp2Pin4  = le_gpio.api
+        mangoh_gpioExp2Pin5  = le_gpio.api
+        mangoh_gpioExp2Pin6  = le_gpio.api
+        mangoh_gpioExp2Pin7  = le_gpio.api
+        mangoh_gpioExp2Pin8  = le_gpio.api
+        mangoh_gpioExp2Pin9  = le_gpio.api
+        mangoh_gpioExp2Pin10 = le_gpio.api
+        mangoh_gpioExp2Pin11 = le_gpio.api
+        mangoh_gpioExp2Pin12 = le_gpio.api
+        mangoh_gpioExp2Pin13 = le_gpio.api
+        mangoh_gpioExp2Pin14 = le_gpio.api
+        mangoh_gpioExp2Pin15 = le_gpio.api
+        mangoh_gpioExp3Pin0  = le_gpio.api
+        mangoh_gpioExp3Pin1  = le_gpio.api
+        mangoh_gpioExp3Pin2  = le_gpio.api
+        mangoh_gpioExp3Pin3  = le_gpio.api
+        mangoh_gpioExp3Pin4  = le_gpio.api
+        mangoh_gpioExp3Pin5  = le_gpio.api
+        mangoh_gpioExp3Pin6  = le_gpio.api
+        mangoh_gpioExp3Pin7  = le_gpio.api
+        mangoh_gpioExp3Pin8  = le_gpio.api
+        mangoh_gpioExp3Pin9  = le_gpio.api
+        mangoh_gpioExp3Pin10 = le_gpio.api
+        mangoh_gpioExp3Pin11 = le_gpio.api
+        mangoh_gpioExp3Pin12 = le_gpio.api
+        mangoh_gpioExp3Pin13 = le_gpio.api
+        mangoh_gpioExp3Pin14 = le_gpio.api
+        mangoh_gpioExp3Pin15 = le_gpio.api
+    }
+}

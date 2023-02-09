@@ -1,0 +1,2 @@
+#!/bin/sh
+app runProc socialService --exe=twitterClient -- $@

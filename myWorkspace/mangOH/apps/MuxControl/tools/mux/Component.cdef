@@ -1,0 +1,18 @@
+
+requires:
+{
+    api:
+    {
+        mangoh_muxCtrl.api  [manual-start]
+    }
+}
+
+cflags:
+{
+    "-std=c99"
+}
+
+sources:
+{
+    muxCtrl.c
+}

@@ -1,0 +1,105 @@
+//--------------------------------------------------------------------------------------------------
+/**
+ * Configure the session
+ */
+//--------------------------------------------------------------------------------------------------
+FUNCTION Config
+(
+    string brokerUrl[256] IN,
+    int32 portNumber IN,
+    int32 keepAlive IN,
+    int32 QoS IN
+);
+
+//--------------------------------------------------------------------------------------------------
+/**
+ * Open a MQTT session
+ */
+//--------------------------------------------------------------------------------------------------
+FUNCTION Connect
+(
+    string password[32] IN
+);
+
+//--------------------------------------------------------------------------------------------------
+/**
+ * Close MQTT session
+ */
+//--------------------------------------------------------------------------------------------------
+FUNCTION Disconnect();
+
+//--------------------------------------------------------------------------------------------------
+/**
+ * Send data (key, value) to MQTT broker
+ */
+//--------------------------------------------------------------------------------------------------
+FUNCTION Send
+(
+    string key[128] IN,
+    string value[128] IN,
+    int32  errCode OUT
+);
+
+//--------------------------------------------------------------------------------------------------
+/**
+ * Publish the provided payload on the provided topic
+ *
+ * @return
+ *      the return value description
+ *
+ * @note
+ *      The Publish function provides a more general and lower level interface than the Send
+ *      function.
+ */
+//--------------------------------------------------------------------------------------------------
+FUNCTION le_result_t Publish
+(
+    string topic[128] IN,
+    uint8 payload[2048] IN
+);
+
+//--------------------------------------------------------------------------------------------------
+/**
+ * Handler for session state changes
+ */
+//--------------------------------------------------------------------------------------------------
+HANDLER SessionStateHandler
+(
+    bool isConnected IN,       ///< Session State: connected or disconnected
+    int32 connectErrorCode IN, ///< connection returned code
+    int32 subErrorCode         ///< subscribe returned code
+);
+
+//--------------------------------------------------------------------------------------------------
+/**
+ * This event provides information on session state changes
+ */
+//--------------------------------------------------------------------------------------------------
+EVENT SessionState
+(
+    SessionStateHandler sessionStateHandler
+);
+
+//--------------------------------------------------------------------------------------------------
+/**
+ * Handler for Incoming message
+ */
+//--------------------------------------------------------------------------------------------------
+HANDLER IncomingMessageHandler
+(
+    string topicName[128] IN, ///< Name of the subscribed topic
+    string key[128] IN,       ///< Key Name of the data
+    string value[128] IN,     ///< Value of the data
+    string timestamp[16] IN   ///< Timestamp of the data
+);
+
+//--------------------------------------------------------------------------------------------------
+/**
+ * This event provides information on the incoming MQTT message
+ */
+//--------------------------------------------------------------------------------------------------
+EVENT IncomingMessage
+(
+    IncomingMessageHandler incomingMessageHandler
+);
+

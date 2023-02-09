@@ -1,0 +1,24 @@
+//--------------------------------------------------------------------------------------------------
+// System definition for a tutorial app which uses an ADC based light sensor as a means to wake up
+// from low power sleep and send a tweet. Also goes back to sleep if it gets dark.
+//
+// Copyright (C) Sierra Wireless Inc.  Use of this work is subject to license.
+//--------------------------------------------------------------------------------------------------
+
+#include "$LEGATO_ROOT/default.sdef"
+
+apps:
+{
+    $MANGOH_ROOT/apps/SocialService/socialService
+    $MANGOH_ROOT/samples/tutorials/developerDay2016/apps/wakeupAndTweet
+}
+
+commands:
+{
+    twitter = socialService:/bin/twitter
+}
+
+interfaceSearch:
+{
+    $MANGOH_ROOT/apps/SocialService/interfaces
+}

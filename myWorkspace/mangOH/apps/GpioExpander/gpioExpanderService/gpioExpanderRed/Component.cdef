@@ -1,0 +1,46 @@
+sources:
+{
+    expanderConfigurationRed.c
+}
+
+cflags:
+{
+    "-std=c99"
+    "-I${CURDIR}/../gpioExpanderCommon"
+}
+
+requires:
+{
+    api:
+    {
+        expanderInterrupt = le_gpio.api
+    }
+
+    component:
+    {
+        gpioExpanderCommon
+    }
+}
+
+provides:
+{
+    api:
+    {
+        mangoh_gpioExpPin0  = le_gpio.api
+        mangoh_gpioExpPin1  = le_gpio.api
+        mangoh_gpioExpPin2  = le_gpio.api
+        mangoh_gpioExpPin3  = le_gpio.api
+        mangoh_gpioExpPin4  = le_gpio.api
+        mangoh_gpioExpPin5  = le_gpio.api
+        mangoh_gpioExpPin6  = le_gpio.api
+        mangoh_gpioExpPin7  = le_gpio.api
+        mangoh_gpioExpPin8  = le_gpio.api
+        mangoh_gpioExpPin9  = le_gpio.api
+        mangoh_gpioExpPin10 = le_gpio.api
+        mangoh_gpioExpPin11 = le_gpio.api
+        mangoh_gpioExpPin12 = le_gpio.api
+        mangoh_gpioExpPin13 = le_gpio.api
+        mangoh_gpioExpPin14 = le_gpio.api
+        mangoh_gpioExpPin15 = le_gpio.api
+    }
+}

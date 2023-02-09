@@ -1,0 +1,37 @@
+version: 1.0.0
+sandboxed: true
+start: auto
+executables:
+{
+    arduinoBridge = ( bridgeComponent )
+}
+
+processes:
+{
+    run:
+    {
+        ( arduinoBridge )
+    }
+
+    envVars:
+    {
+        LE_LOG_LEVEL=DEBUG
+    }
+
+    maxCoreDumpFileBytes: 512K
+    faultAction: restart
+}
+
+bindings:
+{
+    arduinoBridge.bridgeComponent.dataRouter -> dataRouter.dataRouter
+    arduinoBridge.bridgeComponent.mangoh_muxCtrl -> muxCtrlService.mangoh_muxCtrl
+}
+
+requires:
+{
+    device:
+    {
+        [rw]    /dev/ttyUSB0 /dev/ttyUSB0
+    }
+}

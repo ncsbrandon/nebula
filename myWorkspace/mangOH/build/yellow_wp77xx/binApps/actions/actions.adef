@@ -1,0 +1,75 @@
+
+//
+// Application definition created for the application actions.
+// This is an auto generated definition for a binary-only application.
+//
+// Do not edit, doing so may cause the application to fail.
+//
+
+version: 1.0.0
+start: auto
+sandboxed: true
+
+requires:
+{
+}
+
+bundles:
+{
+    binary:
+    {
+        [rx]   ./read-only/bin/action   /bin/action
+        [rx]   ./read-only/bin/actionClient   /bin/actionClient
+        [rx]   ./read-only/bin/actions   /bin/actions
+        [rx]   ./read-only/lib/libComponent_actionClient.so   /lib/libComponent_actionClient.so
+        [rx]   ./read-only/lib/libComponent_actionRunner.so   /lib/libComponent_actionRunner.so
+        [rx]   ./read-only/lib/libComponent_actionTool.so   /lib/libComponent_actionTool.so
+        [rx]   ./read-only/lib/libComponent_periodicSensor.so   /lib/libComponent_periodicSensor.so
+    }
+}
+
+processes:
+{
+    faultAction: restart
+
+    envVars:
+    {
+        LE_LOG_LEVEL = "ERROR"
+        PATH = "/usr/local/bin:/usr/bin:/bin"
+    }
+
+    run:
+    {
+        ( actions )
+        ( actionClient )
+    }
+}
+
+extern:
+{
+    requires:
+    {
+        actionClient.actionClient.actionRunner = $CURDIR/interfaces/actionRunner.api
+        actions.periodicSensor.dhubIO = $CURDIR/interfaces/io.api
+        actions.actionRunner.admin = $CURDIR/interfaces/admin.api
+        actions.actionRunner.io = $CURDIR/interfaces/io.api
+        actions.actionRunner.query = $CURDIR/interfaces/query.api
+        actions.actionRunner.dhubIO = $CURDIR/interfaces/io.api
+    }
+
+    provides:
+    {
+        $CURDIR/interfaces/actionRunner.api
+    }
+}
+bindings:
+{
+    action.actionTool.actionClient -> actionClient.actionClient.actionClient
+    action.actionTool.actionClient2 -> actionClient.actionClient.actionClient2
+    actionClient.actionClient.actionRunner -> actions.actionRunner
+    actions.periodicSensor.dhubIO -> dataHub.io
+    actions.actionRunner.admin -> dataHub.admin
+    actions.actionRunner.io -> dataHub.io
+    actions.actionRunner.query -> dataHub.query
+    actions.actionRunner.dhubIO -> dataHub.io
+}

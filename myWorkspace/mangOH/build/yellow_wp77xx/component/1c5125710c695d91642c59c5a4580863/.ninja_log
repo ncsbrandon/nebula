@@ -1,0 +1,26 @@
+# ninja log v5
+7	98	1675953814	org.bluez.GattService1.c	1ee45d7c4f7eae32
+7	98	1675953814	org.bluez.GattService1.h	1ee45d7c4f7eae32
+1	106	1675953814	org.bluez.Device1.c	a14882f13340cc7e
+1	106	1675953814	org.bluez.Device1.h	a14882f13340cc7e
+0	114	1675953814	org.bluez.Adapter1.c	6ce7b4c177414ebb
+0	114	1675953814	org.bluez.Adapter1.h	6ce7b4c177414ebb
+2	118	1675953814	org.bluez.GattDescriptor1.c	4abb341bea453bf3
+2	118	1675953814	org.bluez.GattDescriptor1.h	4abb341bea453bf3
+2	118	1675953814	org.bluez.GattManager1.c	e01452d5e7b5283d
+2	118	1675953814	org.bluez.GattManager1.h	e01452d5e7b5283d
+1	120	1675953814	org.bluez.GattCharacteristic1.c	27b2280809476856
+1	120	1675953814	org.bluez.GattCharacteristic1.h	27b2280809476856
+106	179	1675953814	org.bluez.LEAdvertisingManager1.c	a4b5859fc4ea9f79
+106	179	1675953814	org.bluez.LEAdvertisingManager1.h	a4b5859fc4ea9f79
+98	187	1675953814	org.bluez.LEAdvertisement1.c	4a685c4be0f4e6a7
+98	187	1675953814	org.bluez.LEAdvertisement1.h	4a685c4be0f4e6a7
+188	687	1675953814	CMakeFiles/BluezDBus.dir/org.bluez.GattManager1.c.o	18b1ad367a0bb03e
+188	828	1675953814	CMakeFiles/BluezDBus.dir/org.bluez.GattDescriptor1.c.o	97d52c60c4863d8
+189	849	1675953814	CMakeFiles/BluezDBus.dir/org.bluez.GattService1.c.o	19a925e7a34cf4a8
+187	896	1675953814	CMakeFiles/BluezDBus.dir/org.bluez.Adapter1.c.o	e4fa7c36489f4fde
+188	1044	1675953814	CMakeFiles/BluezDBus.dir/org.bluez.GattCharacteristic1.c.o	dd98ac2f891b06f4
+187	1218	1675953815	CMakeFiles/BluezDBus.dir/org.bluez.Device1.c.o	e57986d2ffb6f87c
+687	1258	1675953815	CMakeFiles/BluezDBus.dir/org.bluez.LEAdvertisement1.c.o	3baea4792a03dc4c
+828	1267	1675953815	CMakeFiles/BluezDBus.dir/org.bluez.LEAdvertisingManager1.c.o	49cfb2a0b963e9e4
+1267	1304	1675953815	libBluezDBus.so	329929da4136c93e

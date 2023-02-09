@@ -1,0 +1,88 @@
+
+//
+// Application definition created for the application io.
+// This is an auto generated definition for a binary-only application.
+//
+// Do not edit, doing so may cause the application to fail.
+//
+
+version: 0.0.1
+start: auto
+sandboxed: false
+
+requires:
+{
+}
+
+bundles:
+{
+    binary:
+    {
+        [rx]   ./read-only/bin/io   /bin/io
+        [rx]   ./read-only/lib/libComponent_components.so   /lib/libComponent_components.so
+        [rx]   ./read-only/lib/libComponent_periodicSensor.so   /lib/libComponent_periodicSensor.so
+    }
+
+    file:
+    {
+        [r]   read-only/lib/libComponent_le_pa_uartMode.so   /lib/libComponent_le_pa_uartMode.so
+        [r]   read-only/lib/libComponent_swiQmi.so   /lib/libComponent_swiQmi.so
+    }
+}
+
+processes:
+{
+    faultAction: restart
+
+    envVars:
+    {
+        LE_LOG_LEVEL = "ERROR"
+        PATH = "/legato/systems/current/apps/io/read-only/bin:/usr/local/bin:/usr/bin:/bin"
+    }
+
+    run:
+    {
+        ( io )
+    }
+}
+
+extern:
+{
+    requires:
+    {
+        io.periodicSensor.dhubIO = $CURDIR/interfaces/io.api
+        io.components.le_appCtrl = $CURDIR/interfaces/le_appCtrl.api
+        io.components.le_adc = $CURDIR/interfaces/le_adc.api
+        io.components.le_info = $CURDIR/interfaces/le_info.api
+        io.components.le_riPin = $CURDIR/interfaces/le_riPin.api
+        io.components.dhubIO = $CURDIR/interfaces/io.api
+        io.components.io = $CURDIR/interfaces/io.api
+        io.components.iot0_gpio1 = $CURDIR/interfaces/le_gpio.api
+        io.components.iot0_gpio2 = $CURDIR/interfaces/le_gpio.api
+        io.components.iot0_gpio3 = $CURDIR/interfaces/le_gpio.api
+        io.components.iot0_gpio4 = $CURDIR/interfaces/le_gpio.api
+        io.components.exp_gpio1 = $CURDIR/interfaces/le_gpio.api
+        io.components.exp_gpio2 = $CURDIR/interfaces/le_gpio.api
+    }
+
+    provides:
+    {
+        $CURDIR/interfaces/ioc.api
+    }
+}
+bindings:
+{
+    io.periodicSensor.dhubIO -> dataHub.io
+    io.components.le_appCtrl -> <root>.le_appCtrl
+    io.components.le_adc -> modemService.le_adc
+    io.components.le_info -> modemService.le_info
+    io.components.le_riPin -> modemService.le_riPin
+    io.components.dhubIO -> dataHub.io
+    io.components.io -> dataHub.io
+    io.components.iot0_gpio1 -> gpioService.le_gpioPin42
+    io.components.iot0_gpio2 -> gpioService.le_gpioPin13
+    io.components.iot0_gpio3 -> gpioService.le_gpioPin7
+    io.components.iot0_gpio4 -> gpioService.le_gpioPin8
+    io.components.exp_gpio1 -> gpioService.le_gpioPin24
+    io.components.exp_gpio2 -> gpioService.le_gpioPin33
+}

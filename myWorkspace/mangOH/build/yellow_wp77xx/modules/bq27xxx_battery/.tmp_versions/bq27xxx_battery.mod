@@ -1,0 +1,2 @@
+/home/firstuser/nebula/myWorkspace/mangOH/build/yellow_wp77xx/modules/bq27xxx_battery/bq27xxx_battery.ko
+/home/firstuser/nebula/myWorkspace/mangOH/build/yellow_wp77xx/modules/bq27xxx_battery/bq27xxx_battery_i2c.o /home/firstuser/nebula/myWorkspace/mangOH/build/yellow_wp77xx/modules/bq27xxx_battery/devres_backport.o /home/firstuser/nebula/myWorkspace/mangOH/build/yellow_wp77xx/modules/bq27xxx_battery/bq27xxx_battery_source.o /home/firstuser/nebula/myWorkspace/mangOH/build/yellow_wp77xx/modules/bq27xxx_battery/power_supply_backport.o

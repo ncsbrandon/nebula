@@ -1,0 +1,112 @@
+
+//--------------------------------------------------------------------------------------------------
+/**
+ * Configuration API for the social service.  Use this API to authenticate the social client against
+ * the server.
+ *
+ * Copyright (C) Sierra Wireless Inc. Use of this work is subject to license.
+ */
+//--------------------------------------------------------------------------------------------------
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+/**
+ * Maximum URL string allowed.  (Excluding a trailing NULL.)
+ */
+//--------------------------------------------------------------------------------------------------
+DEFINE URL_LEN = 600;
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+/**
+ * Maximum key string size.  (Excluding a trailing NULL.)
+ */
+//--------------------------------------------------------------------------------------------------
+DEFINE KEY_LEN = 400;
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+/**
+ * Maximum server PIN size.  (Excluding a trailing NULL.)
+ */
+//--------------------------------------------------------------------------------------------------
+DEFINE PIN_LEN = 20;
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+/**
+ * Call to check to see if the service is fully authenticated against the Twitter server.
+ *
+ * @return - True if the authentication has been completed, false if not.
+ */
+//--------------------------------------------------------------------------------------------------
+FUNCTION bool IsAuthenticated
+(
+);
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+/**
+ * Configure the identity of the client application.  This should only need to be done once, however
+ * it must be done before GetPinUrl and TransmitUserPin are called.
+ *
+ * This is because the server needs to know the identity of the client before it will communicate
+ * with it.
+ *
+ * @return - LE_OK if successful.
+ *         - LE_UNAVAILABLE if the write fails, or if the secure storage service is unavailable.
+ */
+//--------------------------------------------------------------------------------------------------
+FUNCTION le_result_t SetConsumerKeys
+(
+    string publicKey[KEY_LEN] IN,  ///< Application public key.
+    string secretKey[KEY_LEN] IN   ///< The secret key that shall not be shared.
+);
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+/**
+ * Request an authentication PIN URL be generated.  This URL is then given to the user to visit.  On
+ * connecting the user will be given an unique PIN code.  This code is then passed to the
+ * TransmitUserPin to fully authorize the client.
+ *
+ * @return - LE_OK if successful.
+ *         - LE_COMM_ERROR if the server can not be contacted.
+ *         - LE_UNAVAILABLE if the secure storage service is unavailable.
+ */
+//--------------------------------------------------------------------------------------------------
+FUNCTION le_result_t GetPinUrl
+(
+    string url[URL_LEN] OUT  ///< A URL string for the user to enter into their web-browser.
+);
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+/**
+ * The PIN code is passed to this function to send back to the server.  This allows the server to
+ * confirm that the user does want to authorize this client.  The server then sends back the final
+ * authorization keys that the service will keep in secure storage.
+ *
+ * @return - LE_OK if successful and the service has been successfully authenticated.
+ *         = LE_COMM_ERROR if the server can not be contacted.
+ *         - LE_UNAVAILABLE if the secure storage service is unavailable.
+ */
+//--------------------------------------------------------------------------------------------------
+FUNCTION le_result_t TransmitUserPin
+(
+    string newPin[PIN_LEN] IN  ///< The unique PIN given to the user by the server.
+);
