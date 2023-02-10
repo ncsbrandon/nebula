@@ -3,5 +3,5 @@
 
 COMPONENT_INIT
 {
-    LE_INFO("Hello world!");
+    LE_INFO("Hello NEBULA! yeah!");
 }
