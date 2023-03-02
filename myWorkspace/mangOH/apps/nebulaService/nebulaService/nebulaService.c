@@ -76,7 +76,7 @@ static void I2cBusEnable
 }
 */
 
-static le_result_t I2cWrite
+static le_result_t I2cWriteByte
 (
     uint8_t i2cBus,   ////< I2C bus to perform the write on
     uint8_t i2cAddr,  ////< I2C device address
@@ -109,6 +109,44 @@ static le_result_t I2cWrite
     return result;
 }
 
+static le_result_t I2cWriteStr
+(
+    uint8_t i2cBus,   ////< I2C bus to perform the write on
+    uint8_t i2cAddr,  ////< I2C device address
+    char* data,      ////< Data to write to the given register
+    uint8_t len
+)
+{
+    int i2cFd = I2cAccessBusAddr(i2cBus, i2cAddr);
+    if (i2cFd < 0)
+    {
+        LE_ERROR("failed [%d] to open i2c bus %d for access to address %d", i2cFd, i2cBus, i2cAddr);
+        return LE_FAULT;
+    }
+
+    le_result_t result;
+
+    for(int i=0; i<len; i++)
+    {
+        const int writeResult = i2c_smbus_write_byte(i2cFd, data[i]);
+        if (writeResult < 0)
+        {
+            LE_ERROR("smbus write failed with error %d", writeResult);
+            result = LE_FAULT;
+            break;
+        }
+        else
+        {
+            LE_DEBUG("SMBUS Write addr 0x%x, data=0x%x", i2cAddr, data[i]);
+            result = LE_OK;
+        }
+    }   
+
+    close(i2cFd);
+
+    return result;
+}
+
 COMPONENT_INIT
 {
     LE_INFO("Hello NEBULA 2Mar2023!");
@@ -118,11 +156,15 @@ COMPONENT_INIT
     //I2cWrite(0x05, 0x3E, 0x69);
     //I2cWrite(0x06, 0x3E, 0x69);
     //I2cWrite(0x07, 0x3E, 0x69);
-    I2cWrite(0x08, 0x3E, 'H');
-    I2cWrite(0x08, 0x3E, 'e');
-    I2cWrite(0x08, 0x3E, 'l');
-    I2cWrite(0x08, 0x3E, 'l');
-    I2cWrite(0x08, 0x3E, 'o');
+    I2cWriteByte(0x08, 0x3E, 'H');
+    I2cWriteByte(0x08, 0x3E, 'e');
+    I2cWriteByte(0x08, 0x3E, 'l');
+    I2cWriteByte(0x08, 0x3E, 'l');
+    I2cWriteByte(0x08, 0x3E, 'o');
+
+    char world[] = " World!";
+
+    I2cWriteStr(0x08, 0x3E, (char*)&world, strlen(world));
 
     LE_ASSERT_OK(dhubIO_CreateInput(Led0ResPath, DHUBIO_DATA_TYPE_BOOLEAN, ""));
 }
