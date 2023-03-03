@@ -1,6 +1,7 @@
 sources:
 {
     nebula-i2c.c
+    nebula-uart.c
     nebulaService.c
 }
 

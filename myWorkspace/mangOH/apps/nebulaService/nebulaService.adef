@@ -31,5 +31,7 @@ requires:
         [rw] /dev/i2c-6 /dev/i2c-6
         [rw] /dev/i2c-7 /dev/i2c-7
         [rw] /dev/i2c-8 /dev/i2c-8
+        [rw] /dev/ttyHS0 /dev/ttyHS0
+        [rw] /dev/ttyHSL1 /dev/ttyHSL1
     }
 }
