@@ -1,3 +1,5 @@
+start: auto
+
 executables:
 {
     nebula = ( nebulaService )
@@ -5,6 +7,10 @@ executables:
 
 processes:
 {
+    envVars:
+    {
+        LE_LOG_LEVEL = DEBUG
+    }
     run:
     {
         ( nebula )
@@ -14,4 +20,16 @@ processes:
 extern:
 {
     nebula.nebulaService.dhubIO  // required API
+}
+
+requires:
+{
+    device:
+    {
+        [rw] /dev/i2c-4 /dev/i2c-4
+        [rw] /dev/i2c-5 /dev/i2c-5
+        [rw] /dev/i2c-6 /dev/i2c-6
+        [rw] /dev/i2c-7 /dev/i2c-7
+        [rw] /dev/i2c-8 /dev/i2c-8
+    }
 }
