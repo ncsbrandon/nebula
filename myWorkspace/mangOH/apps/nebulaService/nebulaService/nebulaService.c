@@ -38,15 +38,24 @@ COMPONENT_INIT
     //memset(version, 0, 25);
     //I2cReadStr(I2CBUS, MCUADDR, version, 24);
 
-    int fd = UARTOpen("/dev/ttyHSL1");
+    LE_INFO("Open the port");
+    int fd = UARTOpen("/dev/ttyHS0");
     if(fd < 0)
         exit(-1);
 
-    UARTWriteBuffer(fd, (char*)VERSION, strlen(VERSION));
+    LE_INFO("Writes");
+    UARTWriteSentence(fd, (char*)NAME);
+    UARTWriteSentence(fd, (char*)VERSION);
 
-    char version[25];
-    UARTReadBuffer(fd, version, 25);
+    LE_INFO("Reads");
+    char input[48];
+    UARTReadSentence(fd, input, 48);
+    LE_INFO(input);
+    UARTReadSentence(fd, input, 48);
+    LE_INFO(input);
+    
 
+    LE_INFO("Close");
     UARTClose(fd);
 
     LE_ASSERT_OK(dhubIO_CreateInput(Led0ResPath, DHUBIO_DATA_TYPE_BOOLEAN, ""));

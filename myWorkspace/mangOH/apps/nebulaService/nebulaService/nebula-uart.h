@@ -33,4 +33,17 @@ LE_SHARED le_result_t UARTReadBuffer
     uint8_t len
 );
 
+LE_SHARED le_result_t UARTWriteSentence
+(
+    int fd,
+    char* data
+);
+
+LE_SHARED le_result_t UARTReadSentence
+(
+    int fd,
+    char* data,
+    uint8_t len
+);
+
 #endif // NEBULA_UART_H

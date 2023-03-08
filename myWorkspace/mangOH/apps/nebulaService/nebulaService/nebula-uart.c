@@ -116,7 +116,7 @@ le_result_t UARTReadBuffer
 
     memset(data, 0, len);
 
-    int readResult = read(fd, data, len);
+    int readResult = read(fd, data, len-1);
     if (readResult < 0)
     {
         LE_ERROR("uart read failed with error %d", readResult);
@@ -124,8 +124,71 @@ le_result_t UARTReadBuffer
     }
     else
     {
-        LE_DEBUG("uart read [%d]", readResult);
+        LE_DEBUG("uart buffer [%d]", readResult);
         data[readResult]='\0';
+        result = LE_OK;
+    }
+
+    return result;
+}
+
+le_result_t UARTWriteSentence
+(
+    int fd,
+    char* data
+)
+{
+    le_result_t result = UARTWriteBuffer(fd, data, strlen(data));
+    if(result != LE_OK)
+        return result;
+    
+    result = UARTWriteByte(fd, '\r');
+    if(result != LE_OK)
+        return result;
+
+    result = UARTWriteByte(fd, '\n');
+    if(result != LE_OK)
+        return result;
+
+    return LE_OK;
+}
+
+le_result_t UARTReadSentence
+(
+    int fd,
+    char* data,
+    uint8_t len
+)
+{
+    le_result_t result;
+
+    memset(data, 0, len);
+
+    int n = 0;
+    int i = 0;
+    char buf = '\0';
+    do {
+        n = read(fd, &buf, 1);
+        if(buf != '\r' && buf != '\n') {
+            LE_DEBUG("uart read n[%d] i[%d] buf[%c]", n, i, buf);
+            sprintf(data + i, "%c", buf);
+            i += n;
+        } else {
+            LE_DEBUG("uart ignore n[%d] i[%d] buf[%c]", n, i, buf);
+        }
+    } while( buf != '\r' && n > 0);
+
+    if (n < 0) {
+        LE_ERROR("uart read failed with error [%d]", n);
+        result = LE_FAULT;
+    }
+    else if (i == 0) {
+        LE_ERROR("nothing to read");
+        result = LE_FAULT;
+    }
+    else {
+        LE_DEBUG("uart sentence [%d]", i);
+        data[i]='\0';
         result = LE_OK;
     }
 
