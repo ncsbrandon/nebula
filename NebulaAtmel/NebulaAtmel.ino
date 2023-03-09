@@ -128,7 +128,7 @@ void handleDigitalOutRequest() {
   Serial.print(',');
   Serial.print(pin);
   Serial.print(',');
-  Serial.print(value);
+  Serial.println(value);
 }
 
 void handleDigitalInRequest() {
@@ -139,7 +139,7 @@ void handleDigitalInRequest() {
   Serial.print(',');
   Serial.print(pin);
   Serial.print(',');
-  Serial.print(value);
+  Serial.println(value);
 }
 
 void handleAnalogOutRequest() {
@@ -151,7 +151,7 @@ void handleAnalogOutRequest() {
   Serial.print(',');
   Serial.print(pin);
   Serial.print(',');
-  Serial.print(value);
+  Serial.println(value);
 }
 
 void handleAnalogInRequest() {
@@ -162,5 +162,5 @@ void handleAnalogInRequest() {
   Serial.print(',');
   Serial.print(pin);
   Serial.print(',');
-  Serial.print(value);
+  Serial.println(value);
 }
