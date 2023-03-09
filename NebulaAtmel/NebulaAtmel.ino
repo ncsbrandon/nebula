@@ -18,16 +18,16 @@ String inputString = "";      // a String to hold incoming data
 bool stringComplete = false;  // whether the string is complete
 
 void setup() {
-    // setup serial
+  // setup serial
   Serial.begin(115200);
-  while (!Serial) {;}
+  while (!Serial) { ; }
 
   // print start
   //char buffer[48];
   //sprintf(buffer, "Starting %s %s", NAME, VERSION);
   handleNameRequest();
   handleVersionRequest();
-  
+
   // setup i2C
   Wire.begin();
   //Wire.onReceive(receiveEvent);
@@ -71,39 +71,44 @@ void serialEvent() {
 
 String getParam(int n) {
   int i = 0;
-  while(n > 0) {
+  while (n > 0) {
     int j = inputString.indexOf(',', i);
-    if(j == -1)
+    if (j == -1)
       return "";
     j++;
     i = j;
     n--;
   }
   int k = inputString.indexOf(',', i);
-  if(k == -1)
+  if (k == -1)
     return inputString.substring(i);
   return inputString.substring(i, k);
 }
 
 void loop() {
   if (stringComplete) {
-    if(inputString.startsWith(NAMEREQUEST))
-      handleNameRequest();
-    if(inputString.startsWith(VERSIONREQUEST))
-      handleVersionRequest(); 
-    if(inputString.startsWith(DOREQUEST))
-      handleDigitalOutRequest();
-    if(inputString.startsWith(DIREQUEST))
-      handleDigitalInRequest();
-    if(inputString.startsWith(AOREQUEST))
-      handleAnalogOutRequest();
-    if(inputString.startsWith(AIREQUEST))
-      handleAnalogInRequest();
-
+    handleRequest();
     // clear the string
     inputString = "";
     stringComplete = false;
   }
+}
+
+void handleRequest() {
+  if (inputString.startsWith(NAMEREQUEST))
+    handleNameRequest();
+  else if (inputString.startsWith(VERSIONREQUEST))
+    handleVersionRequest();
+  else if (inputString.startsWith(DOREQUEST))
+    handleDigitalOutRequest();
+  else if (inputString.startsWith(DIREQUEST))
+    handleDigitalInRequest();
+  else if (inputString.startsWith(AOREQUEST))
+    handleAnalogOutRequest();
+  else if (inputString.startsWith(AIREQUEST))
+    handleAnalogInRequest();
+  else
+    Serial.println(F("MSG,Unknown request"));  
 }
 
 void handleNameRequest() {
