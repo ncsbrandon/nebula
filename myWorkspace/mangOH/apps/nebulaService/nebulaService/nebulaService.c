@@ -10,13 +10,8 @@
 #define DHUBIO_DATA_TYPE_BOOLEAN 1
 #endif
 
-static const char NAME[] = "Nebula Legato";
-static const char VERSION[] = "v1.0.3Mar2023";
-
-//static const int I2CBUS = 0x08;
-//static const int MCUADDR = 0x3E;
-
-//static const int REQUEST_VERSION = 1;
+static const char NAME[] = "NAME,Nebula Legato";
+static const char VERSION[] = "VERSION,1.0.13Mar2023";
 
 static const char Led0ResPath[] = "led/0";
 
@@ -54,7 +49,6 @@ COMPONENT_INIT
     UARTReadSentence(fd, input, 48);
     LE_INFO(input);
     
-
     LE_INFO("Close");
     UARTClose(fd);
 
