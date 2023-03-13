@@ -33,7 +33,7 @@ void setup() {
   //Wire.onReceive(receiveEvent);
 
   // connect to the ADC
-  if (adc.begin(0x3C))
+  if (adc.begin(0x48))
     Serial.println(F("MSG,ADC found"));
   else
     Serial.println(F("MSG,ADC not found"));
@@ -45,9 +45,9 @@ void setup() {
     Serial.println(F("MSG,IO not found"));
 
   // setup IO pins
-  io.pinMode(16, OUTPUT);
-  io.pinMode(17, ANALOG_OUTPUT);
-  io.pinMode(18, INPUT);
+  io.pinMode(10, OUTPUT);
+  io.pinMode(11, INPUT);
+  io.pinMode(12, ANALOG_OUTPUT);
 }
 
 /*
@@ -61,8 +61,7 @@ void serialEvent() {
     char inChar = (char)Serial.read();
     // add it to the inputString:
     inputString += inChar;
-    // if the incoming character is a newline, set a flag so the main loop can
-    // do something about it:
+    // if the incoming character is a newline, set a flag
     if (inChar == '\n') {
       stringComplete = true;
     }
@@ -108,7 +107,7 @@ void handleRequest() {
   else if (inputString.startsWith(AIREQUEST))
     handleAnalogInRequest();
   else
-    Serial.println(F("MSG,Unknown request"));  
+    Serial.println(F("MSG,Unknown request"));
 }
 
 void handleNameRequest() {
@@ -122,13 +121,15 @@ void handleVersionRequest() {
 void handleDigitalOutRequest() {
   int pin = getParam(1).toInt();
   int value = getParam(2).toInt();
-  io.digitalWrite(pin, value);
+  bool ret = io.digitalWrite(pin, value == 0 ? LOW : HIGH);
 
   Serial.print(DOREQUEST);
   Serial.print(',');
   Serial.print(pin);
   Serial.print(',');
-  Serial.println(value);
+  Serial.print(value);
+  Serial.print(',');
+  Serial.println(ret);
 }
 
 void handleDigitalInRequest() {
@@ -144,6 +145,8 @@ void handleDigitalInRequest() {
 
 void handleAnalogOutRequest() {
   int pin = getParam(1).toInt();
+  //   0 = 3.3V
+  // 255 = 0V
   int value = getParam(2).toInt();
   io.analogWrite(pin, value);
 
@@ -157,6 +160,8 @@ void handleAnalogOutRequest() {
 void handleAnalogInRequest() {
   int pin = getParam(1).toInt();
   uint16_t value = adc.getSingleEnded(pin);
+  //    0 = 0V
+  // 2048 = 3.3V  
 
   Serial.print(AIREQUEST);
   Serial.print(',');
