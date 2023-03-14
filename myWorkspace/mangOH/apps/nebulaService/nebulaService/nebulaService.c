@@ -33,10 +33,12 @@ COMPONENT_INIT
     //memset(version, 0, 25);
     //I2cReadStr(I2CBUS, MCUADDR, version, 24);
 
-    LE_INFO("Open the port");
+    LE_INFO("Open the UART");
     int fd = UARTOpen("/dev/ttyHS0");
-    if(fd < 0)
+    if(fd < 0) {
+		LE_ERROR("UART open failure [%d].  Exiting.", fd);
         exit(-1);
+	}
 
     LE_INFO("Writes");
     UARTWriteSentence(fd, (char*)NAME);
